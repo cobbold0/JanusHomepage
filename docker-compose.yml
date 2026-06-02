@@ -1,0 +1,17 @@
+name: janus-homepage
+
+services:
+  janus-homepage:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: JanusHomepage
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./config:/app/config
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+    environment:
+      HOMEPAGE_ALLOWED_HOSTS: localhost:3000,127.0.0.1:3000
+      HOMEPAGE_CONFIG_EDITOR: "true"
+    restart: unless-stopped
