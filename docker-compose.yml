@@ -12,6 +12,6 @@ services:
       - ./config:/app/config
       - /var/run/docker.sock:/var/run/docker.sock:ro
     environment:
-      HOMEPAGE_ALLOWED_HOSTS: localhost:3000,127.0.0.1:3000
+      HOMEPAGE_ALLOWED_HOSTS: ${HOMEPAGE_ALLOWED_HOSTS:-*}
       HOMEPAGE_CONFIG_EDITOR: "true"
     restart: unless-stopped
